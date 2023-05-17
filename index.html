@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="./assets/cambioIcon.png" type="image/x-icon">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+    <title>Conversor de Moeda</title>
+</head>
+
+<body>
+    <div class="container">
+        <main>
+            <section class="form">
+                <label>
+                    <p>Converter <b>de</b></p>
+                    <select>
+                        <option>R$ Real brasileiro</option>
+                    </select>
+                </label>
+        
+                <label>
+                    <p>Converter <b>para</b></p>
+                    <select>
+                        <option>US$ Dólar americano</option>
+                        <option>€ Euro</option>
+                        <option>£ Libra</option>
+                        <option>₿ Bitcoin</option>
+                    </select>
+                </label>
+        
+                <label><p><b>Valor</b></p>
+                    <input placeholder="R$10.000,00" />
+                </label>
+        
+                <button onclick=(convert())>Converter</button>
+            </section>
+    
+            <section class="resultCurrency">
+                <div class="initialCurrency">
+                    <img src="./assets/BR_icon.png" alt="símbolo-brasil" />
+                    <p>Real</p>
+                    <p class="currencyPrice">R$ 10.000,00</p>
+                </div>
+    
+                <span class="material-symbols-outlined">
+                    shift
+                </span>
+    
+                <div class="finalCurrency">
+                    <img src="./assets/EUA_icon.png" alt="símbolo-EUA" />
+                    <p>Dólar</p>
+                    <p class="currencyPrice">US$ 2.000,00</p>
+                </div>
+            </section>
+        </main>
+
+    </div>
+
+</body>
+<script src="./script.js"></script>
+
+</html>

@@ -1,0 +1,138 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+    
+}
+
+p{
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 18px;
+    color: #777777;
+}
+
+
+.container{
+    background: url("./assets/background.jpg");
+    background-size: cover;
+    width: 100vw;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+main{
+    background: #F4F4F4;
+    border-radius: 20px;
+    width: 100%;
+    max-width: 375px;
+    display: flex;
+    flex-direction: column;
+    padding: 24px;
+    gap:24px;
+    
+}
+
+.form{
+    display: flex;
+    flex-direction: column;    
+    gap:24px;
+}
+
+label{
+    display: flex;
+    flex-direction: column;
+}
+
+select{
+    cursor: pointer;
+}
+
+input, select{
+    outline: none;
+    padding: 15px;
+    background: #FFFFFF;
+    border: 1px solid #BBBBBB;
+    border-radius: 4px;
+    margin-top: 5px;
+}
+
+button{
+    border: none;
+    background: #772FD3;
+    border-radius: 5px;
+    padding: 15px;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 18px;
+    color: #FFFFFF;
+    cursor: pointer;    
+}
+
+button:hover{
+    opacity: 0.7;
+}
+
+button:active{
+    opacity: 0.5;
+}
+
+.resultCurrency{
+    border: 1px solid #772FD3;
+    border-radius: 20px;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.initialCurrency,.finalCurrency{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+}
+
+img{
+    width: 44px;
+}
+
+.material-symbols-outlined{    
+    color: #772FD3;
+    transform: rotateX(180deg);
+    font-size: 50px !important;
+    margin: 15px 0;
+}
+
+.currencyPrice{
+    font-weight: 700;
+    font-size: 20px;
+    color: #555555;
+}
+
+@media screen and (min-width:900px){
+    .container{
+        height: 100vh;
+
+    }
+
+    main{
+        flex-direction: row;
+        gap: 48px;
+        width: 100%;
+        max-width: calc(30px + 375px + 375px + 24px);
+    }
+
+    section{
+        width: 100%;
+        max-width: 375px;
+    }
+
+    .resultCurrency{
+        justify-content: center;
+    }
+}
