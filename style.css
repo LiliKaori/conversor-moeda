@@ -63,26 +63,6 @@ input, select{
     margin-top: 5px;
 }
 
-button{
-    border: none;
-    background: #772FD3;
-    border-radius: 5px;
-    padding: 15px;
-    font-weight: 700;
-    font-size: 18px;
-    line-height: 18px;
-    color: #FFFFFF;
-    cursor: pointer;    
-}
-
-button:hover{
-    opacity: 0.7;
-}
-
-button:active{
-    opacity: 0.5;
-}
-
 .resultCurrency{
     border: 1px solid #772FD3;
     border-radius: 20px;

@@ -21,31 +21,28 @@
             <section class="form">
                 <label>
                     <p>Converter <b>de</b></p>
-                    <select>
-                        <option>R$ Real brasileiro</option>
+                    <select class="convertFrom">
+                        <option>BRL Real Brasileiro</option>
                     </select>
                 </label>
         
                 <label>
                     <p>Converter <b>para</b></p>
                     <select onchange=showCurrency() class="convertTo">
-                        <option>US$ Dólar americano</option>
-                        <option>€ Euro</option>
-                        <option>£ Libra</option>
-                        <option>₿ Bitcoin</option>
+                        <!-- <option>${currency.code} ${currency.name}</option> -->
+                        
                     </select>
                 </label>
         
                 <label><p><b>Valor</b></p>
                     <input onkeyup=showValue() placeholder="R$10.000,00" />
                 </label>
-        
-                <button onclick=(convert())>Converter</button>
+                        
             </section>
     
             <section class="resultCurrency">
                 <div class="initialCurrency">
-                    <img src="./assets/BR_icon.png" alt="símbolo-brasil" />
+                    <img src="./assets/BRL_icon.png" alt="símbolo-brasil" />
                     <p>Real</p>
                     <p id="initialCurrencyValue" class="currencyPrice">R$ 10.000,00</p>
                 </div>
@@ -55,7 +52,7 @@
                 </span>
     
                 <div class="finalCurrency">
-                    <img id="finalCurrencyIcon" src="./assets/EUA_icon.png" alt="símbolo-EUA" />
+                    <img id="finalCurrencyIcon" src="./assets/USD_icon.png" alt="símbolo-EUA" />
                     <p id="finalCurrencyName">Dólar</p>
                     <p id="finalCurrencyValue" class="currencyPrice">US$ 2.000,00</p>
                 </div>
