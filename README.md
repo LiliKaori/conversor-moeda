@@ -11,7 +11,7 @@ Nesse projeto:
 <ul>
   <li>Tem responsividade mobile first (estilização pensada primeiro no celular, se acomodando a diferentes tamanhos de telas)</li>
   <li>Máscara (manipulação dos valores com o Regex), transformando para o formato da moeda selecionada assim que é digitado qualquer valor no input.</li>
-  <li>Importação os dados das moedas a partir de uma conjunto de dados (array) e incluindo dinamicamente com a manipulação da DOM.</li>
+  <li>Importação os dados das moedas a partir de um conjunto de dados (array) e incluindo dinamicamente com a manipulação da DOM.</li>
   <li>Em breve, será incluído valores reais para conversão a partir do consumo de uma API</li>
 </ul>
 <br>
