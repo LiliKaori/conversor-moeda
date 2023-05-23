@@ -22,7 +22,7 @@
                 <label>
                     <p>Converter <b>de</b></p>
                     <select class="convertFrom">
-                        <option>BRL Real Brasileiro</option>
+                        <option value="BRL">BRL Real Brasileiro</option>
                     </select>
                 </label>
         
@@ -35,7 +35,7 @@
                 </label>
         
                 <label><p><b>Valor</b></p>
-                    <input onkeyup=showValue() placeholder="R$10.000,00" />
+                    <input onkeyup="showValue(); formatNumber()" placeholder="R$10.000,00" maxlength="25"/>
                 </label>
                         
             </section>
@@ -62,6 +62,10 @@
     </div>
 
 </body>
-<script src="./script.js"></script>
+<script src="./script.js">
+    
+    
+
+</script>
 
 </html>

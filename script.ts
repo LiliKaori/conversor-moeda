@@ -47,17 +47,25 @@ const currency: Icurrency[]= [
     
 const currencyTo= document.getElementsByClassName("convertTo")[0] as HTMLSelectElement
 const currencyFrom= document.getElementsByClassName("convertFrom")[0] as HTMLSelectElement
-const filteredCurrency : Icurrency[]= currency.filter((currency)=>`${currency.code} ${currency.name}`!==currencyFrom.value)
-filteredCurrency.map((currency)=>currencyTo.innerHTML+=`<option>${currency.code} ${currency.name}</option>`)
+const filteredCurrency : Icurrency[]= currency.filter((currency)=>currency.code!==currencyFrom.value)
+filteredCurrency.map((currency)=>currencyTo.innerHTML+=`<option value="${currency.code}">${currency.code} ${currency.name}</option>`)
 
 function showValue () : void {
-    const value : number= parseFloat(document.getElementsByTagName("input")[0].value)
+    const value : number= parseInt(document.getElementsByTagName("input")[0].value.replaceAll(/[\.\,\e]/gim, "").replace(/^(.*\s)(?=[0-9])/gim, "").replaceAll(/^[0]+/gim, "")) /100
     const initialCurrencyValue = document.getElementById("initialCurrencyValue") as HTMLElement    
+    const index = currency.findIndex((currency)=>currency.code===currencyFrom.value)
     if(value){
-        initialCurrencyValue.innerHTML= value.toFixed(2) as string
+        initialCurrencyValue.innerHTML= new Intl.NumberFormat("pt-BR",{
+            style: "currency",
+            currency:currency[index].code
+        }).format(value) as string
+        
         convert()
     }else{
-        initialCurrencyValue.innerHTML= "0.00" as string
+        initialCurrencyValue.innerHTML= new Intl.NumberFormat("pt-BR",{
+            style: "currency",
+            currency:currency[index].code
+        }).format(0) as string
     }    
         
 }
@@ -67,7 +75,7 @@ function showCurrency () : void {
     const finalCurrencyIcon = document.getElementById("finalCurrencyIcon") as HTMLImageElement    
     showValue()
     
-        const index : number = currency.findIndex((currency)=>`${currency.code} ${currency.name}`===currencyTo.value)        
+        const index : number = currency.findIndex((currency)=>currency.code===currencyTo.value)        
         finalCurrencyName.innerHTML= currency[index].name as string
         finalCurrencyIcon.src=currency[index].icon as string
        
@@ -75,17 +83,74 @@ function showCurrency () : void {
 }
 
 function convert() : void {  
-    const value : number = parseFloat(document.getElementsByTagName("input")[0].value)  
+    const value : number = parseInt(document.getElementsByTagName("input")[0].value.replaceAll(/[\.\,\e]/gim, "").replace(/^(.*\s)(?=[0-9])/gim, "").replaceAll(/^[0]+/gim, "")) /100
     const finalCurrencyValue = document.getElementById("finalCurrencyValue") as HTMLElement
     
     if(value){
        
-            const index : number= currency.findIndex((currency=>`${currency.code} ${currency.name}`===currencyTo.value))
+            const index : number= currency.findIndex((currency=>currency.code===currencyTo.value))
             const convertedValue : number= value/currency[index].value    
-            finalCurrencyValue.innerHTML=convertedValue.toFixed(2) as string
+            finalCurrencyValue.innerHTML=new Intl.NumberFormat("pt-BR",{
+                style: "currency",
+                currency:currency[index].code
+            }).format(convertedValue) as string
+            
         
     }else{
-        finalCurrencyValue.innerHTML= "0.00" as string
+        const index = currency.findIndex((currency)=>currency.code===currencyFrom.value)
+        finalCurrencyValue.innerHTML= new Intl.NumberFormat("pt-BR",{
+            style: "currency",
+            currency:currency[index].code
+        }).format(0) as string
     }
 }
 
+function formatNumber(){  
+    const input = document.getElementsByTagName("input")[0]
+    const value = input.value.replaceAll(/[\.\,\e]/gim, "").replace(/^(.*\s)(?=[0-9])/gim, "").replaceAll(/^[0]+/gim, ""); 
+    const index : number= currency.findIndex((currency=>currency.code===currencyFrom.value))
+    
+    console.log(index)
+    if(value.length===1){
+        const formatedValue=value.replace(/(\d$)/,"0,0$1")
+        console.log(formatedValue)
+        input.value=`${currency[index].symbol} ${formatedValue}` 
+
+    }
+    if(value.length>1 && value.length<3){
+        const formatedValue=value.replace(/(\d{2}$)/,"0,$1")
+        console.log(formatedValue)
+        input.value=`${currency[index].symbol} ${formatedValue}`
+
+    }
+    if(value.length>=3 && value.length<6){
+        const formatedValue=value.replace(/(\d{3})?(\d{2}$)/,"$1,$2")        
+        input.value=`${currency[index].symbol} ${formatedValue}`
+
+    }
+    if(value.length>=6 && value.length<9){
+        const formatedValue=value.replace(/(\d{3})?(\d{3})(\d{2}$)/,"$1.$2,$3")        
+        input.value=`${currency[index].symbol} ${formatedValue}`
+    }
+    if(value.length>=9 && value.length<12){
+        const formatedValue=value.replace(/(\d{3})?(\d{3})(\d{3})(\d{2}$)/,"$1.$2.$3,$4")        
+        input.value=`${currency[index].symbol} ${formatedValue}`
+
+    }
+    if(value.length>=12 && value.length<15){
+        const formatedValue=value.replace(/(\d{3})?(\d{3})(\d{3})(\d{3})(\d{2}$)/,"$1.$2.$3.$4,$5")        
+        input.value=`${currency[index].symbol} ${formatedValue}`
+
+    }
+    if(value.length>=15 && value.length<18){
+        const formatedValue=value.replace(/(\d{3})?(\d{3})(\d{3})(\d{3})(\d{3})(\d{2}$)/,"$1.$2.$3.$4.$5,$6")        
+        input.value=`${currency[index].symbol} ${formatedValue}`
+
+    }
+    if(value.length>=18 && value.length<21){
+        const formatedValue=value.replace(/(\d{3})?(\d{3})(\d{3})(\d{3})(\d{3})(\d{2}$)/,"$1.$2.$3.$4.$5,$6")        
+        input.value=`${currency[index].symbol} ${formatedValue}`
+
+    }
+    
+}
